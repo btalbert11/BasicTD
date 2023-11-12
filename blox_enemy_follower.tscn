@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbj50owdbwwg2"]
+
+[ext_resource type="Script" path="res://blox_enemy_follower.gd" id="1_0a3sp"]
+[ext_resource type="PackedScene" uid="uid://c54mmjvb0xcix" path="res://enemy.tscn" id="2_4m1pg"]
+
+[node name="BloxEnemyFollower" type="PathFollow2D"]
+position = Vector2(107, 647)
+rotation = -1.61077
+rotates = false
+loop = false
+script = ExtResource("1_0a3sp")
+
+[node name="Blox" parent="." instance=ExtResource("2_4m1pg")]
+position = Vector2(3.0376, -0.879295)
+rotation = 1.61077
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="enemy_died" from="Blox" to="." method="_on_blox_enemy_died"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

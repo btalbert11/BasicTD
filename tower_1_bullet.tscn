@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmudrhvkktt61"]
+
+[ext_resource type="Texture2D" uid="uid://k6os5hyeaj87" path="res://icon.svg" id="1_106sd"]
+[ext_resource type="Script" path="res://tower_1_bullet.gd" id="1_hho88"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_amuy6"]
+size = Vector2(10, 8)
+
+[node name="Tower1_bullet" type="Node2D" groups=["Bullets"]]
+position = Vector2(435, 206)
+script = ExtResource("1_hho88")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.103516, 0.091797)
+texture = ExtResource("1_106sd")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_amuy6")

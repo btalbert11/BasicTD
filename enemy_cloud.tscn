@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddqutppgr5qjt"]
+
+[ext_resource type="Texture2D" uid="uid://beyso72eucoqh" path="res://Cloud Guy.png" id="1_8xqey"]
+[ext_resource type="Script" path="res://enemy_cloud.gd" id="1_u0wea"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rlkxw"]
+radius = 52.0384
+
+[node name="EnemyCloud" type="Node2D" groups=["Enemies"]]
+script = ExtResource("1_u0wea")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(3.8147e-06, 0)
+scale = Vector2(0.816406, 0.816406)
+texture = ExtResource("1_8xqey")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_rlkxw")
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

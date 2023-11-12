@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://chaa30n6lvhc3"]
+
+[ext_resource type="Script" path="res://sniper_tower_bullet.gd" id="1_obum2"]
+
+[node name="SniperTowerBullet" type="Node2D" groups=["Bullets"]]
+script = ExtResource("1_obum2")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 366.0
+offset_bottom = 11.0

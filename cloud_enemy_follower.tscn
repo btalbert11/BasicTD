@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bifs2qcbfe3r3"]
+
+[ext_resource type="Script" path="res://CloudEnemyFollower.gd" id="1_m7kkw"]
+[ext_resource type="PackedScene" uid="uid://ddqutppgr5qjt" path="res://enemy_cloud.tscn" id="2_lir6v"]
+
+[node name="CloudEnemyFollower" type="PathFollow2D"]
+position = Vector2(107, 647)
+rotation = -1.61077
+rotates = false
+loop = false
+script = ExtResource("1_m7kkw")
+
+[node name="EnemyCloud" parent="." instance=ExtResource("2_lir6v")]
+rotation = 1.5708
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="enemy_died" from="EnemyCloud" to="." method="_on_enemy_cloud_enemy_died"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
