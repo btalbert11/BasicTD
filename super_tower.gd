@@ -4,6 +4,7 @@ extends Node2D
 @export var fire_rate: float
 @export var active: bool = false
 @export var cost: int
+@export var range: float
 
 @export var bullet_type:PackedScene
 var fire_timer: Timer
@@ -21,6 +22,7 @@ func _ready():
 	
 	# Connect signals from child nodes
 	tower_connect()
+	set_range()
 
 func make_active():
 	active = true
@@ -30,7 +32,7 @@ func make_active():
 
 func _process(delta):
 	if !active:
-		position = get_viewport().get_mouse_position()
+		position = Vector2(get_viewport().get_mouse_position().x - ($ColorRect.size.x/2), get_viewport().get_mouse_position().y - ($ColorRect.size.y/2))
 	pass
 
 func _on_attack_range_area_entered(area):
@@ -71,5 +73,9 @@ func fire_at_target():
 	pass
 	
 func tower_connect():
+	print("NOT IMPLEMENTED")
+	pass
+
+func set_range():
 	print("NOT IMPLEMENTED")
 	pass

@@ -1,6 +1,6 @@
 extends Node2D
 @export var enemy_target: Node2D
-@export var fade_speed: float = 0.05
+@export var fade_speed: float = 4.7
 @export var damage: int
 
 var r: int = 255
@@ -23,7 +23,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if fading:
-		a = a - fade_speed
+		a = a - fade_speed * delta
 		$ColorRect.color = Color(r, g, b, a)
 		if a <= 0:
 			queue_free()

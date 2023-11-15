@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1dgfu3puolry"]
+
+[ext_resource type="Script" path="res://morter_bullet.gd" id="1_52bk4"]
+[ext_resource type="PackedScene" uid="uid://ofks8f6xajty" path="res://morter_explode.tscn" id="2_rxodi"]
+[ext_resource type="Texture2D" uid="uid://b11haue7d7qme" path="res://Morter Shell.png" id="2_v3qi2"]
+
+[node name="MorterBullet" type="Node2D"]
+scale = Vector2(1.449, 1.449)
+script = ExtResource("1_52bk4")
+morter_explosion = ExtResource("2_rxodi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_v3qi2")

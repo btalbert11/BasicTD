@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://cayiqim54dq2w"]
+
+[ext_resource type="Script" path="res://big_bad_guy.gd" id="1_gyq6i"]
+[ext_resource type="Texture2D" uid="uid://chl2x8hcbpsul" path="res://Big Bad Guy1.png" id="2_v4rgs"]
+[ext_resource type="Texture2D" uid="uid://bp6sy8dxu80if" path="res://Big Bad Guy2.png" id="3_u15b3"]
+[ext_resource type="Texture2D" uid="uid://bi5xboougpyn6" path="res://Big Bad Guy3.png" id="4_s34xf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kw600"]
+size = Vector2(197.99, 198.697)
+
+[node name="BigBadGuy" type="Node2D" groups=["Enemies"]]
+script = ExtResource("1_gyq6i")
+health = 250
+speed = 0.02
+money_value = 100
+enemy_name = "BigBad"
+
+[node name="FirstSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_v4rgs")
+
+[node name="SecondSprite" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_u15b3")
+
+[node name="ThirdSprite" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_s34xf")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0.250001, -0.250001)
+rotation = 0.785398
+shape = SubResource("RectangleShape2D_kw600")
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

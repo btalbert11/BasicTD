@@ -1,3 +1,27 @@
-[gd_scene format=3 uid="uid://c0qgqh77r8ulu"]
+[gd_scene load_steps=4 format=3 uid="uid://c0qgqh77r8ulu"]
 
-[node name="StormEnemy" type="Node2D"]
+[ext_resource type="Texture2D" uid="uid://blbqr28kac1kg" path="res://Lightning Cloud Guy.png" id="1_rkw2g"]
+[ext_resource type="Script" path="res://storm_enemy.gd" id="1_yhhed"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vv86j"]
+radius = 46.0109
+
+[node name="StormEnemy" type="Node2D" groups=["Enemies"]]
+script = ExtResource("1_yhhed")
+health = 4
+speed = 0.15
+money_value = 10
+enemy_name = "Storm"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.358, 1.358)
+texture = ExtResource("1_rkw2g")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_vv86j")
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

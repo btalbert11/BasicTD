@@ -14,6 +14,7 @@ script = ExtResource("1_iqpei")
 tower_damage = 1
 fire_rate = 0.45
 cost = 50
+range = 181.0
 bullet_type = ExtResource("2_k1nyo")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -39,5 +40,3 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlacementHitbox"]
 position = Vector2(20, 20)
 shape = SubResource("RectangleShape2D_615nb")
-
-[node name="AttackRangeIndicator" type="Polygon2D" parent="."]

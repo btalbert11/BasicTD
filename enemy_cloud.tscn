@@ -8,6 +8,10 @@ radius = 52.0384
 
 [node name="EnemyCloud" type="Node2D" groups=["Enemies"]]
 script = ExtResource("1_u0wea")
+health = 7
+speed = 0.06
+money_value = 10
+enemy_name = "Cloud"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(3.8147e-06, 0)

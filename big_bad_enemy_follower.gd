@@ -6,7 +6,7 @@ signal enemy_died(enemy_name, money_value)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	progress_speed = $EnemyCloud.speed
+	progress_speed = $BigBadGuy.speed
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -19,7 +19,7 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 	emit_signal("escaped_screen")
 	delete_self()
 
-func _on_enemy_cloud_enemy_died(enemy_type, money_value):
+func _on_big_bad_guy_enemy_died(enemy_type, money_value):
 	enemy_died.emit(enemy_type, money_value)
 	delete_self()
 

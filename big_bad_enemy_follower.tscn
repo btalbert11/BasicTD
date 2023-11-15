@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cidfnmi6belxb"]
+
+[ext_resource type="PackedScene" uid="uid://cayiqim54dq2w" path="res://big_bad_guy.tscn" id="1_62snh"]
+[ext_resource type="Script" path="res://big_bad_enemy_follower.gd" id="1_u1a4y"]
+
+[node name="BigBadEnemyFollower" type="PathFollow2D"]
+rotates = false
+loop = false
+script = ExtResource("1_u1a4y")
+
+[node name="BigBadGuy" parent="." instance=ExtResource("1_62snh")]
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="enemy_died" from="BigBadGuy" to="." method="_on_big_bad_guy_enemy_died"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

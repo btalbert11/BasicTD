@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://jvqcnnr0bi2h"]
+
+[ext_resource type="Script" path="res://morter_tower.gd" id="1_05nyg"]
+[ext_resource type="PackedScene" uid="uid://d1dgfu3puolry" path="res://morter_bullet.tscn" id="2_ihhqo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cdtvt"]
+radius = 301.97
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l6x7j"]
+size = Vector2(40, 40)
+
+[node name="MorterTower" type="Node2D"]
+script = ExtResource("1_05nyg")
+tower_damage = 5
+fire_rate = 2.4
+range = 300.0
+bullet_type = ExtResource("2_ihhqo")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.831373, 0.168627, 0.172549, 1)
+
+[node name="AttackRange" type="Area2D" parent="."]
+position = Vector2(20, 20)
+collision_mask = 2
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+shape = SubResource("CircleShape2D_cdtvt")
+
+[node name="PlacementHitbox" type="Area2D" parent="."]
+position = Vector2(20, 20)
+collision_layer = 8
+collision_mask = 16
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlacementHitbox"]
+shape = SubResource("RectangleShape2D_l6x7j")

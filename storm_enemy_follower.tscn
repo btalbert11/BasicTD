@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://e3f7bo4q2g2n"]
+
+[ext_resource type="PackedScene" uid="uid://c0qgqh77r8ulu" path="res://storm_enemy.tscn" id="1_61sl2"]
+[ext_resource type="Script" path="res://storm_enemy_follower.gd" id="1_g08k3"]
+
+[node name="StormEnemyFollower" type="PathFollow2D"]
+rotates = false
+loop = false
+script = ExtResource("1_g08k3")
+
+[node name="StormEnemy" parent="." instance=ExtResource("1_61sl2")]
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="enemy_died" from="StormEnemy" to="." method="_on_storm_enemy_died"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

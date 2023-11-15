@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://cn8n57e28lbfe"]
+[gd_scene load_steps=17 format=3 uid="uid://cn8n57e28lbfe"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_3161e"]
 [ext_resource type="PackedScene" uid="uid://dmd60iv63nc4e" path="res://tower_1.tscn" id="1_xe7jd"]
+[ext_resource type="PackedScene" uid="uid://jvqcnnr0bi2h" path="res://morter_tower.tscn" id="4_cgkrr"]
 [ext_resource type="PackedScene" uid="uid://d2pv6vbiulgdu" path="res://sniper_tower.tscn" id="5_2yham"]
 [ext_resource type="Script" path="res://EnemyPath.gd" id="5_rv4f4"]
 
@@ -45,6 +46,7 @@ point_count = 11
 script = ExtResource("1_3161e")
 tower_1 = ExtResource("1_xe7jd")
 sniper_tower = ExtResource("5_2yham")
+morter_tower = ExtResource("4_cgkrr")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 1154.0
@@ -97,7 +99,7 @@ position = Vector2(19.5, 74)
 shape = SubResource("RectangleShape2D_s2vbg")
 
 [node name="Path4" type="ColorRect" parent="."]
-offset_left = 393.0
+offset_left = 397.0
 offset_top = 494.0
 offset_right = 770.0
 offset_bottom = 546.0
@@ -217,16 +219,16 @@ text = "10 Lives"
 
 [node name="Tower1Purchase" type="Button" parent="."]
 offset_left = 200.0
-offset_top = 604.0
+offset_top = 600.0
 offset_right = 303.0
-offset_bottom = 635.0
+offset_bottom = 631.0
 text = "Tower - $50"
 
 [node name="SniperTowerPurchase" type="Button" parent="."]
-offset_left = 326.0
-offset_top = 604.0
-offset_right = 430.0
-offset_bottom = 635.0
+offset_left = 328.0
+offset_top = 600.0
+offset_right = 432.0
+offset_bottom = 631.0
 text = "Sniper - $70"
 
 [node name="Money" type="Label" parent="."]
@@ -258,6 +260,7 @@ text = "Next Level"
 
 [node name="Lose" type="ColorRect" parent="."]
 visible = false
+z_index = 1
 offset_right = 1152.0
 offset_bottom = 649.0
 color = Color(0.180392, 0.180392, 0.180392, 0.603922)
@@ -302,7 +305,55 @@ offset_bottom = 41.0
 theme_override_font_sizes/font_size = 20
 text = "Level: 1"
 
+[node name="MorterTowerPurchase" type="Button" parent="."]
+offset_left = 456.0
+offset_top = 600.0
+offset_right = 568.0
+offset_bottom = 631.0
+text = "Morter - $100"
+
+[node name="Win" type="ColorRect" parent="."]
+visible = false
+z_index = 1
+offset_right = 1152.0
+offset_bottom = 649.0
+color = Color(0.180392, 0.180392, 0.180392, 0.603922)
+
+[node name="Label" type="Label" parent="Win"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -241.0
+offset_top = -70.0
+offset_right = 241.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = "YOU WIN"
+
+[node name="RestartGame" type="Button" parent="Win"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -104.0
+offset_top = -207.0
+offset_right = 102.0
+offset_bottom = -157.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "Restart Game"
+
 [connection signal="pressed" from="Tower1Purchase" to="." method="_on_tower_1_purchase_pressed"]
 [connection signal="pressed" from="SniperTowerPurchase" to="." method="_on_sniper_tower_purchase_pressed"]
 [connection signal="pressed" from="NextLevel" to="." method="_on_next_level_pressed"]
 [connection signal="pressed" from="Lose/RestartGame" to="." method="_on_restart_game_pressed"]
+[connection signal="pressed" from="MorterTowerPurchase" to="." method="_on_morter_tower_purchase_pressed"]
+[connection signal="pressed" from="Win/RestartGame" to="." method="_on_restart_game_pressed"]
